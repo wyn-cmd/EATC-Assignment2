@@ -147,6 +147,9 @@ uploaded_file = st.sidebar.file_uploader("Upload Transaction CSV", type=["csv"])
 
 if uploaded_file is not None:
     df_raw = pd.read_csv(uploaded_file)
+    if df_raw.empty:
+        st.warning("Uploaded file contains no rows.")
+        st.stop()
     st.write("### Raw Data Preview", df_raw.head())
 
     st.markdown("### Uploaded Data Preview")
@@ -175,6 +178,7 @@ if uploaded_file is not None:
             else:
                 raw_scores = probabilities
 
+            # ensure results match raw index order
             df_results = df_raw.copy()
             df_results["Fraud_Prediction"] = predictions
             df_results["Fraud_Probability"] = probabilities
