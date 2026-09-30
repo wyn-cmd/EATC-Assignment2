@@ -7,10 +7,8 @@ import streamlit as st
 
 
 def preprocess_fraud_data(df, label_encoders=None, scaler=None, expected_features=None):
-    """
-    Applies automated data cleaning, feature engineering, and categorical encoding
-    consistent with the training pipeline, ensuring column counts match the model.
-    """
+    # Cleaning, feature engineering and encoding that mirrors the training pipeline, so the
+    # column set handed to the model lines up with what it was fitted on.
     df_clean = df.copy()
 
     # 1. Datetime Conversions & Feature Engineering (if columns exist)
