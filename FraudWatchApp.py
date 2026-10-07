@@ -148,7 +148,6 @@ if uploaded_file is not None:
     if df_raw.empty:
         st.warning("Uploaded file contains no rows.")
         st.stop()
-    st.write("### Raw Data Preview", df_raw.head())
 
     st.markdown("### Uploaded Data Preview")
     st.dataframe(df_raw.head(), use_container_width=True)
